@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Pagina de Votacion | Segunda Vuelta 2023
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-light bg-info">
+    <h2 class="navbar-brand text-light text-center w-100">{{ voter.last_name }}, {{ voter.first_name }} | DNI: {{ voter.dni }}</h2>
+</nav>
+<div class="container m-5">
+  <div class="row">
+    <div class="col-2"></div>
+    {% for party in parties %}
+    <div class="card col-3 mx-3 text-center" style="width: 18rem;">
+        <img src="{{ party.photo_link }}" class="card-img-top" width="100" height="400" alt="Boleta">
+        <div class="card-body">
+          <h4 class="card-title">{{ party.party_number }}</h4>
+          <h5 class="card-title">{{ party.president }}</h5>
+          <p class="card-text">{{ party.vice_president }}</p>
+          <p class="card-text">{{ party.slogan }}</p>
+          <button class="btn btn-success col-12" data-toggle="modal" data-target="#confirmModal{{ party.pk }}">VOTAR</button>
+        </div>
+      </div>
+      {% include 'confirm-modal.html' %}
+    {% endfor %}
+    <div class="card col-3 ml-3 text-center" style="width: 18rem;">
+      <img src="https://www.ventadirecta.com.uy/wp-content/uploads/sites/178/2019/05/4510.jpg" class="card-img-top" width="100" height="400" alt="Boleta">
+      <div class="card-body">
+        <h4 class="card-title">S/N</h4>
+        <h5 class="card-title">Voto en Blanco</h5>
+        <p class="card-text">Su voto no contara a ningun</p>
+        <p class="card-text">candidato</p>
+        <button class="btn btn-success col-12" data-toggle="modal" data-target="#blankVoteModal">VOTAR</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% include 'blank-vote-modal.html' %}
+{% endblock %}

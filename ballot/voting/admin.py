@@ -1,7 +1,8 @@
 from django.contrib import admin
 
-from .models import Voter, PoliticalParty
+from .models import District, Voter, PoliticalParty
 
+admin.site.register(District)
 
 @admin.register(Voter)
 class VoterAdmin(admin.ModelAdmin):

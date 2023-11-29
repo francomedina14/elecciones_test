@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Pagina de Votacion | Segunda Vuelta 2023
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-light bg-info">
+    <h2 class="navbar-brand text-light text-center w-100">ELECCIONES ARGENTINA 2023</h2>
+</nav>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-3"></div>
+        <form action="{% url 'ballot_form' %}" class="form-group col-6" method="POST">
+            {% csrf_token %}
+            {% if message != False %}
+            <div class="alert alert-info text-center" role="alert">
+                {{ message }}
+            </div>
+            {% endif %}
+            <label for="dni">DNI:</label>
+            <input type="text" name="dni" class="form-control col-12 mb-2" required>
+            <button type="submit" class="btn btn-success col-12">Ingresar</button>
+            <img src="https://microjurisar.files.wordpress.com/2015/10/logo-camara-electoral.jpeg?w=300&h=300" alt="CNE" class="w-100">
+        </form>
+
+    </div>
+   
+</div>
+{% endblock %}

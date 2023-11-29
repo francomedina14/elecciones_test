@@ -1,0 +1,23 @@
+<div class="modal fade" id="confirmModal{{ party.pk }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-info text-light">
+          <h5 class="modal-title" id="exampleModalLabel">¿Desea confirmar su voto?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <img src="{{ party.photo_link }}" class="card-img-top" width="100" height="500" alt="Candidato">
+            <form action="{% url 'vote' voter.id %}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="party_id" value="{{ party.id }}">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-success">Confirmo mi Voto</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

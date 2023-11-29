@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+Resultados Parciales | Segunda Vuelta 2023
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-light bg-info">
+    <h2 class="navbar-brand text-light text-center w-100">ELECCIONES ARGENTINA 2023</h2>
+</nav>
+<div class="container mt-4">
+       <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6 m-5">
+                <h1><strong>Votaron: </strong>{{ total_voters }} personas</h1>
+                <br>
+                <h1><strong>Voto el </strong>{{ percentage_voters }}% del Padron</h1>
+            </div>
+       </div>
+</div>
+{% endblock %}
